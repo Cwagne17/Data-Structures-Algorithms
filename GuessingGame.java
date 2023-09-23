@@ -1,7 +1,7 @@
 
 /**
  * Author: Christopher Wagner
- * Programming Assignment 1
+ * Programming Assignment 1 - Problem 1
  * Date: 9/23/2023
  * 
  * This program will generate a random integer from 0 to 1,000,000.
