@@ -22,8 +22,6 @@ public class WordPuzzle {
         // Define the file paths for the input files
         String puzzleInputFilePath = "input/puzzleinput.txt";
         String wordlistFilePath = "input/wordlist.txt";
-        // String puzzleInputFilePath = "input/testPuzzleInput.txt";
-        // String wordlistFilePath = "input/testWordlist.txt";
 
         try {
             // Parse the input files
@@ -41,6 +39,13 @@ public class WordPuzzle {
 
     }
 
+    /**
+     * Parses the wordlist input file
+     * 
+     * @param filePath the relative path to the input file
+     * @return a list of words found in the wordlist file
+     * @throws FileNotFoundException
+     */
     public static ArrayList<String> parseWordlistFile(String filePath) throws FileNotFoundException {
         Scanner input = new Scanner(new File(filePath));
 
