@@ -20,10 +20,10 @@ import java.util.Scanner;
 public class WordPuzzle {
     public static void main(String[] args) {
         // Define the file paths for the input files
-        // String puzzleInputFilePath = "input/puzzleinput.txt";
-        // String wordlistFilePath = "input/wordlist.txt";
-        String puzzleInputFilePath = "input/testPuzzleInput.txt";
-        String wordlistFilePath = "input/testWordlist.txt";
+        String puzzleInputFilePath = "input/puzzleinput.txt";
+        String wordlistFilePath = "input/wordlist.txt";
+        // String puzzleInputFilePath = "input/testPuzzleInput.txt";
+        // String wordlistFilePath = "input/testWordlist.txt";
 
         try {
             // Parse the input files
@@ -46,7 +46,7 @@ public class WordPuzzle {
 
         ArrayList<String> wordlist = new ArrayList<String>();
         while (input.hasNextLine()) {
-            wordlist.add(input.nextLine());
+            wordlist.add(input.nextLine().toLowerCase());
         }
 
         return wordlist;
@@ -88,7 +88,7 @@ public class WordPuzzle {
                 input.close();
                 throw new Error("Row " + i + " does not have the same number of columns as there are rows.");
             }
-            puzzleInput[i] = String.join("", row).toCharArray();
+            puzzleInput[i] = String.join("", row).toLowerCase().toCharArray();
         }
         input.close();
 
