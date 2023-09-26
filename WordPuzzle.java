@@ -11,6 +11,7 @@
  * Inputs: None, but the program will read from the input files defined
  * 
  * Outputs:
+ *  The puzzle solution will be printed to the console.
  */
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -111,7 +112,7 @@ public class WordPuzzle {
 
         // Initialize the puzzle input found words
         for (CharCoordinate coordinate : foundWords) {
-            solution[coordinate.getX()][coordinate.getY()] = coordinate.getLetter();
+            solution[coordinate.x][coordinate.y] = coordinate.letter;
         }
 
         // Iterate throug the rows
@@ -144,56 +145,37 @@ public class WordPuzzle {
             this.x = x;
             this.y = y;
         }
-
-        public char getLetter() {
-            return this.letter;
-        }
-
-        public int getX() {
-            return this.x;
-        }
-
-        public int getY() {
-            return this.y;
-        }
-
-        public String toString() {
-            return this.letter + ": (" + this.x + ", " + this.y + ")";
-        }
     }
 
     /**
      * Finds all the words in the puzzle input.
      * 
-     * @param puzzleInput
-     * @param wordlist
-     * @return
+     * @param puzzleInput The puzzle input as a NxN matrix.
+     * @param wordlist    The list of words to find in the puzzle input.
+     * @return A list of CharCoordinates that represent the found words in the
      */
     public static ArrayList<CharCoordinate> findWords(char[][] puzzleInput, ArrayList<String> wordlist) {
+        // Represents the coordinates for each character in the found words
         ArrayList<CharCoordinate> foundWords = new ArrayList<CharCoordinate>();
 
-        // Iterates through each row of the puzzle input
-        for (int i = 0; i < puzzleInput.length; i++) {
+        for (String word : wordlist) {
+            // The length of the word minus 1 since the index starts at 0
+            int wordLength = word.length() - 1;
 
-            // Iterates through each letter of the puzzle input
-            for (int j = 0; j < puzzleInput[i].length; j++) {
-
-                // Iterates through each word in the wordlist
-                for (String word : wordlist) {
+            for (int i = 0; i < puzzleInput.length; i++) {
+                for (int j = 0; j < puzzleInput[i].length; j++) {
+                    CharCoordinate[] coordinates;
 
                     // If the first letter of the word is found in the puzzle input
                     if (puzzleInput[i][j] == word.charAt(0)) {
 
-                        // Check the right only if the word can fit
-                        if (j + (word.length() - 1) < puzzleInput[i].length) {
+                        // Check the right
+                        if (j + wordLength < puzzleInput.length) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the right
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i, j + k);
 
@@ -205,23 +187,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the left
-                        if (j - (word.length() - 1) >= 0) {
-
+                        if (j - wordLength >= 0) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the left
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i, j - k);
 
@@ -233,22 +209,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the down
-                        if (i + (word.length() - 1) < puzzleInput.length) {
+                        if (i + wordLength < puzzleInput.length) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
+                            coordinates = new CharCoordinate[word.length()];
 
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
-
-                            // Continue checking the letters to the down
-                            for (int k = 1; k < word.length(); k++) {
+                            // Continue checking the letters down
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i + k, j);
 
@@ -260,22 +231,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the up
-                        if (i - (word.length() - 1) >= 0) {
+                        if (i - wordLength >= 0) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the up
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i - k, j);
 
@@ -287,23 +253,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the down-right
-                        if (i + (word.length() - 1) < puzzleInput.length
-                                && j + (word.length() - 1) < puzzleInput[i].length) {
+                        if (i + wordLength < puzzleInput.length && j + wordLength < puzzleInput.length) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the down-right
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i + k, j + k);
 
@@ -315,22 +275,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the down-left
-                        if (i + (word.length() - 1) < puzzleInput.length && j - (word.length() - 1) >= 0) {
+                        if (i + wordLength < puzzleInput.length && j - wordLength >= 0) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the down-left
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i + k, j - k);
 
@@ -342,22 +297,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the up-right
-                        if (i - (word.length() - 1) >= 0 && j + (word.length() - 1) < puzzleInput[i].length) {
+                        if (i - wordLength >= 0 && j + wordLength < puzzleInput.length) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the up-right
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i - k, j + k);
 
@@ -369,22 +319,17 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
 
                         // Check the up-left
-                        if (i - (word.length() - 1) >= 0 && j - (word.length() - 1) >= 0) {
+                        if (i - wordLength >= 0 && j - wordLength >= 0) {
                             boolean found = true;
-                            CharCoordinate[] coordinates = new CharCoordinate[word.length()];
-
-                            // Add the first letter to the coordinates
-                            coordinates[0] = new WordPuzzle().new CharCoordinate(word.charAt(0), i, j);
+                            coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the up-left
-                            for (int k = 1; k < word.length(); k++) {
+                            for (int k = 0; k < word.length(); k++) {
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i - k, j - k);
 
@@ -396,16 +341,13 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                for (CharCoordinate coordinate : coordinates) {
-                                    foundWords.add(coordinate);
-                                }
+                                foundWords.addAll(foundWords);
                             }
                         }
                     }
                 }
             }
         }
-
         return foundWords;
     }
 }
