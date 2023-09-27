@@ -170,12 +170,14 @@ public class WordPuzzle {
                     if (puzzleInput[i][j] == word.charAt(0)) {
 
                         // Check the right
+
                         if (j + wordLength < puzzleInput.length) {
                             boolean found = true;
                             coordinates = new CharCoordinate[word.length()];
 
                             // Continue checking the letters to the right
                             for (int k = 0; k < word.length(); k++) {
+
                                 // Add the current letter to the coordinates
                                 coordinates[k] = new WordPuzzle().new CharCoordinate(word.charAt(k), i, j + k);
 
@@ -187,7 +189,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -209,7 +212,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -231,7 +235,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -253,7 +258,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -275,7 +281,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -297,7 +304,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -319,7 +327,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
 
@@ -341,7 +350,8 @@ public class WordPuzzle {
                             }
 
                             if (found) {
-                                foundWords.addAll(foundWords);
+                                for (CharCoordinate c : coordinates)
+                                    foundWords.add(c);
                             }
                         }
                     }
