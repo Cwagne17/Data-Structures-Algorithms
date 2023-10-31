@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * This problem is an exercise in the implementation of queue. We will look at
  * the implementation of a circular array. Then we will use the implementation
@@ -93,22 +95,30 @@ public class JosephusProblem {
     }
 
     public static void main(String[] args) {
-        // List of names
-        // TO_DO: Get the list of names from stdin
-        String[] nameList = { "Andy", "Shawna", "Jianjia", "Adam", "Jacob", "Wesley", "Zahari", "Thomas", "Chris",
-                "Ben" };
+        Scanner input = new Scanner(System.in);
+
+        // Get the number of soldiers from stdin
+        System.out.print("How many soldiers? ");
+        int numberOfSoldiers = input.nextInt();
 
         // Create a queue
-        CircularQueue queue = new JosephusProblem().new CircularQueue(nameList.length);
+        CircularQueue queue = new JosephusProblem().new CircularQueue(numberOfSoldiers);
 
         // Initialize the queue
-        for (String name : nameList) {
+        System.out.printf("Type %d soldiers name:\n", numberOfSoldiers);
+        for (int i = 0; i < numberOfSoldiers; i++) {
+            String name = input.next();
             queue.enqueue(name);
         }
 
-        // TO_DO: Get the number of the n-th person to be eliminated from stdin
-        int n = 3;
+        // Get the elimination position from stdin
+        System.out.print("Enter the elimination position: ");
+        int n = input.nextInt();
 
+        // Close the scanner
+        input.close();
+
+        // Eliminate the soldiers
         while (!queue.isEmpty()) {
             // Dequeue than enqueue n - 1 times. This will move the n-th person to the front
             // of the queue
