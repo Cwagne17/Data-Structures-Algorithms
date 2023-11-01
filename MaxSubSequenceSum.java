@@ -1,3 +1,32 @@
+
+/**
+ * Author: Christopher Wagner
+ * Programming Assignment 2 - Problem 1
+ * Date: 10/31/2023
+ * 
+ * This program, MaxSubSequenceSum, focuses on solving the maximum contiguous subsequence sum problem
+ * using four different algorithms: cubic, quadratic, recursive, and linear. It measures the execution time
+ * of each algorithm for various problem sizes and displays the results.
+
+ * Input: The program operates interactively and generates arrays of random integers for different problem sizes.
+ * The user specifies the problem sizes, and the algorithms to be measured.
+
+ * Output: The program calculates the maximum subsequence sum using the specified algorithms and measures the
+ * execution time for each. It then displays the results, including the maximum sum and the time taken by each
+ * algorithm.
+
+ * Procedures Called:
+ * - createArray(int n): Generates an array of random integers for the specified problem size.
+ * - measureExecutionTime(int method, int[] a): Measures the execution time of a given algorithm.
+ * - maxSubSeq1(int[] a): Cubic maximum contiguous subsequence sum algorithm.
+ * - maxSubSeq2(int[] a): Quadratic maximum contiguous subsequence sum algorithm.
+ * - maxSubSeq3(int[] a, int left, int right): Recursive maximum contiguous subsequence sum algorithm.
+ * - maxSubSeq4(int[] a): Linear-time maximum contiguous subsequence sum algorithm.
+
+ * Usage: Run the program, provide the problem sizes, and observe the execution time and maximum sum
+ * achieved by each algorithm for different problem sizes.
+ */
+
 import java.util.Random;
 
 public class MaxSubSequenceSum {
