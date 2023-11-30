@@ -1,4 +1,30 @@
-import java.util.Arrays;
+/**
+ * Author: Christopher Wagner
+ * Programming Assignment 3 - Problem 2
+ * Date: 11/27/2023
+ * 
+ * This program, SortingAlgorthms.java, implements four different sorting
+ * algorithms: insertion sort, selection sort, bubble sort, and merge sort. The
+ * program then compares the runtimes of each algorithm. The program also prints
+ * the first 100 elements of the sorted array.
+ *
+ * Inputs: N/A, the program is designed to create a array with 5000 random
+ * values from 0 to 50000.
+ *
+ * Outputs: The program prints the first 100 values in the array and the time it
+ * took to sort the array.
+ * 
+ * Procedures Called:
+ * - insertionSort(int[] arr): Sorts the given array using the insertion sort
+ * algorithm.
+ * - selectionSort(int[] arr): Sorts the given array using the selection sort
+ * algorithm.
+ * - bubbleSort(int[] arr): Sorts the given array using the bubble sort
+ * algorithm.
+ * - mergeSort(int[] arr): Sorts the given array using the merge sort algorithm.
+ *
+ * Usage: Run the program and observe the output.
+ */
 
 public class SortingAlgorithms {
     public static void main(String[] args) {

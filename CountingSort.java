@@ -1,3 +1,25 @@
+/**
+ * Author: Christopher Wagner
+ * Programming Assignment 3 - Problem 3
+ * Date: 11/27/2023
+ * 
+ * This program, CountingSort.java, implements the counting sort algorithm.
+ * The program creates an array of 5000 random values from 0 to 500 and sorts
+ * the array using the counting sort algorithm. The program then prints 50
+ * values that are every 100th index in the array.
+ *
+ * Inputs: N/A, the program is designed to create an array with 5000 random
+ * values from 0 to 500.
+ *
+ * Outputs: The program prints the first 100 values in the array, the time it
+ * took to sort the array.
+ * 
+ * Procedures Called:
+ * - countingSort(int[] arr): Sorts the given array using the counting sort
+ *
+ * Usage: Run the program and observe the output.
+ */
+
 public class CountingSort {
     public static void main(String[] args) {
         int size = 5000;

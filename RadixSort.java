@@ -1,3 +1,26 @@
+
+/**
+ * Author: Christopher Wagner
+ * Programming Assignment 3 - Problem 3
+ * Date: 11/27/2023
+ * 
+ * This program, RadixSort.java, implements the radix sort algorithm.
+ * The program creates an array of 5000 random values from 0 to 50000 and sorts
+ * the array using the radix sort algorithm. The program then prints 100
+ * values that are the first and last 100 values in the array.
+ *
+ * Inputs: N/A, the program is designed to create an array with 5000 random
+ * values from 0 to 50000.
+ *
+ * Outputs: The program prints the first and last 100 values in the array,
+ * the time it took to sort the array.
+ * 
+ * Procedures Called:
+ * - radixSort(int[] arr): Sorts the given array using the radix sort
+ *
+ * Usage: Run the program and observe the output.
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
